@@ -1,0 +1,7 @@
+{
+  "publish": {
+    "PACKAGE": "docker-slim",
+    "GH_USER": "jc21-rpm",
+    "VERSION": "1.25.3"
+  }
+}
