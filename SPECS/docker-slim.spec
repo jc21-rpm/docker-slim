@@ -3,7 +3,7 @@
 %global gh_user docker-slim
 
 Name:           docker-slim
-Version:        1.25.3
+Version:        1.26.0
 Release:        1
 Summary:        Minify and Secure Docker containers
 Group:          Applications/System
@@ -69,8 +69,11 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Nov 17 2019 Jamie curnow <jc@jc21.com> 1.26.0-1
+- v1.26.0
+
 * Mon Aug 5 2019 Jamie curnow <jc@jc21.com> 1.25.3-1
-- v1.15.3
+- v1.25.3
 
 * Tue Jul 23 2019 Jamie curnow <jc@jc21.com> 1.25.2-1
 - Initial spec
