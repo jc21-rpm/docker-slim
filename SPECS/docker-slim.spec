@@ -3,12 +3,13 @@
 %global gh_user docker-slim
 
 Name:           docker-slim
-Version:        1.26.1
+Version:        1.27.0
 Release:        1
 Summary:        Minify and Secure Docker containers
 Group:          Applications/System
 License:        APACHEv2.0
 URL:            https://github.com/docker-slim/docker-slim
+Source:         https://github.com/%{gh_user}/%{name}/archive/%{version}.tar.gz
 BuildRequires:  golang >= 1.11
 BuildRequires:  make which
 
@@ -31,12 +32,9 @@ analysis techniques. It will throw away what you don't need
 reducing the attack surface for your container.
 
 %prep
-wget https://github.com/%{gh_user}/%{name}/archive/%{version}.tar.gz
-tar xzf %{version}.tar.gz
-
+%setup -q -n %{name}-%{version}
 
 %build
-cd %{name}-%{version}
 export GOPATH=$PWD
 export PATH=${PATH}:${GOPATH}/bin
 export XC_ARCH=amd64
@@ -55,8 +53,8 @@ popd
 
 %install
 install -d -m 755 $RPM_BUILD_ROOT%{_bindir}
-install -m 0755 %{name}-%{version}/src/github.com/%{gh_user}/%{name}/bin/%{name} $RPM_BUILD_ROOT%{_bindir}
-install -m 0755 %{name}-%{version}/src/github.com/%{gh_user}/%{name}/bin/%{name}-sensor $RPM_BUILD_ROOT%{_bindir}
+install -m 0755 src/github.com/%{gh_user}/%{name}/bin/%{name} $RPM_BUILD_ROOT%{_bindir}
+install -m 0755 src/github.com/%{gh_user}/%{name}/bin/%{name}-sensor $RPM_BUILD_ROOT%{_bindir}
 
 
 %clean
@@ -69,6 +67,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Mar 2 2019 Jamie curnow <jc@jc21.com> 1.27.0-1
+- v1.27.0
+
 * Fri Nov 29 2019 Jamie curnow <jc@jc21.com> 1.26.1-1
 - v1.26.1
 
