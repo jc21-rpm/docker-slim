@@ -10,9 +10,7 @@ Group:          Applications/System
 License:        APACHEv2.0
 URL:            https://github.com/docker-slim/docker-slim
 Source:         https://github.com/%{gh_user}/%{name}/archive/%{version}.tar.gz
-BuildRequires:  golang >= 1.11
-BuildRequires:  make which
-
+BuildRequires:  golang >= 1.13, make, which
 
 %description
 Don't change anything in your Docker container image and minify
@@ -35,36 +33,20 @@ reducing the attack surface for your container.
 %setup -q -n %{name}-%{version}
 
 %build
-export GOPATH=$PWD
-export PATH=${PATH}:${GOPATH}/bin
-export XC_ARCH=amd64
-export XC_OS=linux
-export CGO_ENABLED=0
-export GOOS=linux
-mkdir -p src/github.com/%{gh_user}/%{name}
-shopt -s extglob dotglob
-mv !(src) src/github.com/%{gh_user}/%{name}
-shopt -u extglob dotglob
-pushd src/github.com/%{gh_user}/%{name}
-go build -a -installsuffix cgo -o bin/docker-slim cmd/docker-slim/main.go
-go build -a -installsuffix cgo -o bin/docker-slim-sensor cmd/docker-slim-sensor/main.go
-popd
-
+go build -o bin/docker-slim cmd/docker-slim/main.go
+go build -o bin/docker-slim-sensor cmd/docker-slim-sensor/main.go
 
 %install
 install -d -m 755 $RPM_BUILD_ROOT%{_bindir}
-install -m 0755 src/github.com/%{gh_user}/%{name}/bin/%{name} $RPM_BUILD_ROOT%{_bindir}
-install -m 0755 src/github.com/%{gh_user}/%{name}/bin/%{name}-sensor $RPM_BUILD_ROOT%{_bindir}
-
+install -m 0755 bin/%{name} $RPM_BUILD_ROOT%{_bindir}
+install -m 0755 bin/%{name}-sensor $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf %{buildroot}
 
-
 %files
 %{_bindir}/%{name}
 %{_bindir}/%{name}-sensor
-
 
 %changelog
 * Fri Mar 20 2020 Jamie Curnow <jc@jc21.com> 1.29.0-1
