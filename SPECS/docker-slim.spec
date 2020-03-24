@@ -67,13 +67,13 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Fri Mar 20 2019 Jamie Curnow <jc@jc21.com> 1.29.0-1
+* Fri Mar 20 2020 Jamie Curnow <jc@jc21.com> 1.29.0-1
 - v1.29.0
 
-* Tue Mar 17 2019 Jamie Curnow <jc@jc21.com> 1.28.1-1
+* Tue Mar 17 2020 Jamie Curnow <jc@jc21.com> 1.28.1-1
 - v1.28.1
 
-* Mon Mar 2 2019 Jamie Curnow <jc@jc21.com> 1.27.0-1
+* Mon Mar 2 2020 Jamie Curnow <jc@jc21.com> 1.27.0-1
 - v1.27.0
 
 * Fri Nov 29 2019 Jamie Curnow <jc@jc21.com> 1.26.1-1
