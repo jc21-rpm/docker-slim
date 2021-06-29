@@ -3,7 +3,7 @@
 %global gh_user docker-slim
 
 Name:           docker-slim
-Version:        1.34.0
+Version:        1.36.1
 Release:        1
 Summary:        Minify and Secure Docker containers
 Group:          Applications/System
@@ -49,6 +49,9 @@ rm -rf %{buildroot}
 %{_bindir}/%{name}-sensor
 
 %changelog
+* Tue Jun 29 2021 Jamie Curnow <jc@jc21.com> 1.36.1-1
+- v1.36.1
+
 * Mon Feb 1 2021 Jamie Curnow <jc@jc21.com> 1.34.0-1
 - v1.34.0
 
