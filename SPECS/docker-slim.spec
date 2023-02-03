@@ -1,15 +1,16 @@
 %define debug_package %{nil}
 
-%global gh_user docker-slim
+%global gh_user slimtoolkit
+%global gh_repo slim
 
 Name:           docker-slim
-Version:        1.36.1
+Version:        1.40.0
 Release:        1
 Summary:        Minify and Secure Docker containers
 Group:          Applications/System
 License:        APACHEv2.0
 URL:            https://github.com/docker-slim/docker-slim
-Source:         https://github.com/%{gh_user}/%{name}/archive/%{version}.tar.gz
+Source:         https://github.com/%{gh_user}/%{gh_repo}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  golang >= 1.13, make, which
 
 %description
@@ -49,6 +50,9 @@ rm -rf %{buildroot}
 %{_bindir}/%{name}-sensor
 
 %changelog
+* Fri Feb 3 2023 Jamie Curnow <jc@jc21.com> 1.40.0-1
+- v1.40.0
+
 * Tue Jun 29 2021 Jamie Curnow <jc@jc21.com> 1.36.1-1
 - v1.36.1
 
