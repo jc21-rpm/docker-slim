@@ -31,11 +31,11 @@ analysis techniques. It will throw away what you don't need
 reducing the attack surface for your container.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{gh_repo}-%{version}
 
 %build
-go build -o bin/docker-slim cmd/docker-slim/main.go
-go build -o bin/docker-slim-sensor cmd/docker-slim-sensor/main.go
+go build -o bin/docker-slim cmd/slim/main.go
+go build -o bin/docker-slim-sensor cmd/slim-sensor/main.go
 
 %install
 install -d -m 755 $RPM_BUILD_ROOT%{_bindir}
