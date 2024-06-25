@@ -4,8 +4,8 @@
 %global gh_repo slim
 
 Name:           docker-slim
-Version:        1.40.0
-Release:        1
+Version:        1.40.11
+Release:        1%{?dist}
 Summary:        Minify and Secure Docker containers
 Group:          Applications/System
 License:        APACHEv2.0
@@ -50,6 +50,9 @@ rm -rf %{buildroot}
 %{_bindir}/%{name}-sensor
 
 %changelog
+* Tue Jun 25 2024 Jamie Curnow <jc@jc21.com> 1.40.11-1
+- v1.40.11
+
 * Fri Feb 3 2023 Jamie Curnow <jc@jc21.com> 1.40.0-1
 - v1.40.0
 
