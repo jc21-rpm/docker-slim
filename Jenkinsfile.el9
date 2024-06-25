@@ -16,11 +16,6 @@ pipeline {
 				rpmSign()
 			}
 		}
-		stage('Sign') {
-			steps {
-				rpmSign()
-			}
-		}
 		stage('Publish') {
 			steps {
 				dir(path: 'RPMS') {
