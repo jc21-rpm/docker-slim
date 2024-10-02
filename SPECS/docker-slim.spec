@@ -11,7 +11,7 @@ Group:          Applications/System
 License:        APACHEv2.0
 URL:            https://github.com/docker-slim/docker-slim
 Source:         https://github.com/%{gh_user}/%{gh_repo}/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  golang >= 1.13, make, which
+BuildRequires:  golang >= 1.21, make, which
 
 %description
 Don't change anything in your Docker container image and minify
@@ -34,20 +34,19 @@ reducing the attack surface for your container.
 %setup -q -n %{gh_repo}-%{version}
 
 %build
-go build -o bin/docker-slim cmd/slim/main.go
-go build -o bin/docker-slim-sensor cmd/slim-sensor/main.go
+make build
 
 %install
 install -d -m 755 $RPM_BUILD_ROOT%{_bindir}
-install -m 0755 bin/%{name} $RPM_BUILD_ROOT%{_bindir}
-install -m 0755 bin/%{name}-sensor $RPM_BUILD_ROOT%{_bindir}
+install -m 0755 dist_linux/docker-slim $RPM_BUILD_ROOT%{_bindir}
+install -m 0755 dist_linux/slim-sensor $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf %{buildroot}
 
 %files
-%{_bindir}/%{name}
-%{_bindir}/%{name}-sensor
+%{_bindir}/docker-slim
+%{_bindir}/slim-sensor
 
 %changelog
 * Tue Jun 25 2024 Jamie Curnow <jc@jc21.com> 1.40.11-1
